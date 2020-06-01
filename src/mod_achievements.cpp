@@ -10,7 +10,7 @@
 */
 
 #include "Config.h"
-
+#include "ScriptMgr.h"
 
 class AccountAchievements : public PlayerScript
 {
@@ -26,10 +26,6 @@ public:
 	{
 		if (sConfigMgr->GetBoolDefault("Account.Achievements.Enable", true))
         {
-			if (sConfigMgr->GetBoolDefault("Account.Achievements.Announce", true))
-            {
-                ChatHandler(pPlayer->GetSession()).SendSysMessage("This server is running the |cff4CFF00AccountAchievements |rmodule.");
-            }
 
 			std::vector<uint32> Guids;
 			QueryResult result1 = CharacterDatabase.PQuery("SELECT guid, race FROM characters WHERE account = %u", pPlayer->GetSession()->GetAccountId());
